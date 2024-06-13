@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tool is designed to provide accurate predictions for HPC job runtimes and queue times. It uses Machine Learning (ML) models to deliver these predictions with associated uncertainty estimates. This document presents a detailed technical analysis of the models and methodologies used. This codebase is meant as a precursor to a user facing tool, `sbatch_red`, which provides HPC users with runtime and queue time predictions for their job.
+This tool is designed to provide accurate predictions for HPC job runtimes and queue times. It uses Machine Learning (ML) models to deliver these predictions with associated uncertainty estimates. This document presents a detailed technical analysis of the models and methodologies used. This codebase is meant as a precursor to a user facing tool, `sbatch_pred`, which provides HPC users with runtime and queue time predictions for their job.
 
 ## Installation
 
