@@ -1,0 +1,7 @@
+.DS_Store
+/build/
+/environment/
+/data/system_state/
+/src/sbatchpred.egg-info/
+__pycache__/
+*.ipynb_checkpoints

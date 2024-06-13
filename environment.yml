@@ -1,0 +1,18 @@
+name: sbatch_pred
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterlab
+  - matplotlib
+  - numpy
+  - optuna
+  - pandas
+  - pip
+  - pyarrow
+  - scikit-learn
+  - seaborn
+  - tqdm
+  - xgboost
+  - pip:
+    - -e .
