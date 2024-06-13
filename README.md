@@ -4,6 +4,27 @@
 
 This tool is designed to provide accurate predictions for HPC job runtimes and queue times. It uses Machine Learning (ML) models to deliver these predictions with associated uncertainty estimates. This document presents a detailed technical analysis of the models and methodologies used. This codebase is meant as a precursor to a user facing tool, `sbatch_pred`, which provides HPC users with runtime and queue time predictions for their job.
 
+## Overview
+
+This codebase accompanies a paper accepted in the proceedings of [PEARC24](https://pearc.acm.org/pearc24/). In this work, we compared 12 variations of system state features for queue time prediction models. These variations were a result of 3 diferent options for getting a job runtime estimate (a user estimate, the runtime predicted by a separate machine learning model, and the perfect knowledge of the runtime available only after the job has finished), and 4 different options for the way the cluster is understood i.e. *knowledge level* (as a single unified cluster, as a set of isolated partitions, as a set of node-groups available to different queues, or as an amalgamation of partitions and node-groups).
+
+### Model Overview
+
+`sbach_pred` employs two types of models:
+
+1. **Classification Models**: These models categorize jobs into different wait time classes. Historical confusion matrices are maintained to understand the distribution of actual wait times for each predicted class.
+
+2. **Regression Models**: These models predict continuous wait times. The tool introduces random noise into job features and distributions of actual wait times from similar jobs to quantify uncertainty.
+
+### Results Analysis
+
+Our analysis shows that:
+
+- The accuracy of queue time predictions improves significantly when the model is given knowledge of the system state (e.g. number of jobs waiting in a queue, number of nodes currently in use, etc.),  with similar improvements for classification and regression models.
+- Using perfect knowledge of job runtime improves performance when compared to models trained with the user estimate of job runtime.
+- Using the job runtime predicted with ML decreased the error in queue time predicted by the regression models
+- Using a combination of partition and node-level knowledge resulted in the least error in regression models and the highest accuracy in classification models
+
 ## Installation
 
 To install the package, follow these seps:
@@ -46,15 +67,13 @@ To install the package, follow these seps:
 
 2. **Regression Models**: These models predict continuous wait times. The tool introduces random noise into job features and distributions of actual wait times from similar jobs to quantify uncertainty.
 
-## Results Analysis
+## Detailed Results
+### Per-Partition Results for Regression Models
+![reg_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c1bee703-10bd-455c-85ca-933ed9d6b9ba)
 
-Our analysis shows that:
+### Per-Partition Results for Classification Models
+![class_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c077bee5-0f62-4ef1-9ff5-c705d4a5908c)
 
-- The accuracy of queue time predictions improves significantly when the model is given knowledge of the system state (e.g. number of jobs waiting in a queue, number of nodes currently in use, etc.),  with similar improvements for classification and regression models.
-- Using perfect knowledge of job runtime improves performance when compared to models trained with the user estimate of job runtime.
-- Using the job runtime predicted with ML decreased the error in queue time predicted by the regression models.
+### Confusion Matrices for System-State Feature Set Variations
+![cm](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/bc554b4e-52f3-48df-b35c-7c7c3ce8360f)
 
-# Detailed Results
-Per-Partition Results for Regression Models:![reg_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c1bee703-10bd-455c-85ca-933ed9d6b9ba)
-
-Per-Partition Results for Classification Models:![class_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c077bee5-0f62-4ef1-9ff5-c705d4a5908c)
