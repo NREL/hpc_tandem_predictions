@@ -55,8 +55,6 @@ Our analysis shows that:
 - Using the job runtime predicted with ML decreased the error in queue time predicted by the regression models.
 
 # Detailed Results
-Per-Partition Results for Regression Models:
-<img width="935" alt="image" src="https://media.github.nrel.gov/user/2146/files/a165045a-61a0-41de-a7e1-8eb071173686">
+Per-Partition Results for Regression Models:![reg_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c1bee703-10bd-455c-85ca-933ed9d6b9ba)
 
-Per-Partition Results for Classification Models:
-<img width="928" alt="image" src="https://media.github.nrel.gov/user/2146/files/9533e915-dddb-467a-8e64-e79e10f22eaf">
+Per-Partition Results for Classification Models:![class_results](https://github.com/NREL/hpc_tandem_predictions/assets/77375297/c077bee5-0f62-4ef1-9ff5-c705d4a5908c)
