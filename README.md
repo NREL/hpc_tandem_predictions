@@ -47,6 +47,10 @@ To install the package, follow these seps:
 
 *Note: Though this repository is set up to allow you to get runtime predictions for HPC jobs, a thorough approach to this task is already available at [https://github.com/NREL/eagle-jobs](https://github.com/NREL/eagle-jobs). As such, the remainder of this guide is focused on Queue Time prediction and Uncertainty Analysis*
 
+Open Jupyter Lab:
+
+`jupyter lab`
+
 ### Queue Time Prediction Notebooks
 - `system_state`: Calculates system state features to use in the queue time prediction models. System state features are calculated in two groups:
   - *Queue State Features*: Description of the state of the queue based on characteristics of jobs that have been submitted but have not yet started.
